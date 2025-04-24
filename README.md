@@ -11,5 +11,6 @@ $ . .venv/bin/activate
 # Examples
 
 ```
-(.venv) $ python3 check_fix.py -t vpn.[VPN_TO_TEST].net:10443
+(.venv) $ python3 check_fix.py -j ../Fortigates.Shodan/fortigate.json
+(.venv) $ python3 check_fix.py -t IP.IP.IP.IP:10443
 ```
