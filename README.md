@@ -14,3 +14,5 @@ $ . .venv/bin/activate
 (.venv) $ python3 check_fix.py -j ../Fortigates.Shodan/fortigate.json
 (.venv) $ python3 check_fix.py -t IP.IP.IP.IP:10443
 ```
+
+![Sample Execution](screenshot.png)
