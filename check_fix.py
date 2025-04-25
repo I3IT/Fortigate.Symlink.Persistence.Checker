@@ -51,7 +51,7 @@ def main():
         description="Check FIXED/NOT FIXED status and optionally compromised state on devices."
     )
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('-j', '--json-file', help='Path to JSON file of devices')
+    group.add_argument('-j', '--json-file', help='Path to SHODAN JSON file of devices')
     group.add_argument('-t', '--target', help='Single IP:port')
     group.add_argument('-i', '--ip-file', help='Text file with IP:port per line')
     parser.add_argument('--check', action='store_true',

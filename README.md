@@ -8,6 +8,24 @@ $ . .venv/bin/activate
 (.venv) $ pip install -r requirements.txt
 ```
 
+# Usage
+
+```
+$ python3 check_fix.py -h
+usage: check_fix.py [-h] (-j JSON_FILE | -t TARGET | -i IP_FILE) [--check]
+
+Check FIXED/NOT FIXED status and optionally compromised state on devices.
+
+options:
+  -h, --help            show this help message and exit
+  -j, --json-file JSON_FILE
+                        Path to SHODAN JSON file of devices
+  -t, --target TARGET   Single IP:port
+  -i, --ip-file IP_FILE
+                        Text file with IP:port per line
+  --check               If specified, skip the sys_global.conf.gz compromised check
+```
+
 # Examples
 
 ```
