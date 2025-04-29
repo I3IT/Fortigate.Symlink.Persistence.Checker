@@ -1,6 +1,6 @@
 # Fortigate Symlink Persistence Method Checker
 
-The following script checks remotely if a Fortigate unit has been fixed vs the persistence method leveraging a symlink in the VPN-SSL used by TA
+The following script checks remotely if a Fortigate unit has been fixed vs the persistence method leveraging a symlink in the VPN-SSL used by TA. It also detects if it is compromised unless using only check option (--check).
 
 ```
 $ python3 -m venv .venv
