@@ -47,7 +47,25 @@ def load_ip_file(path):
         targets.append((ip, port))
     return targets
 
+def print_banner():
+    banner = r"""
+  _____ _______ _____  ______  _____ _____ _______ 
+ |_   _|__   __|  __ \|  ____|/ ____|_   _|__   __|
+   | |    | |  | |__) | |__  | (___   | |    | |   
+   | |    | |  |  _  /|  __|  \___ \  | |    | |   
+  _| |_   | |  | | \ \| |____ ____) |_| |_   | |   
+ |_____|  |_|  |_|  \_\______|_____/|_____|  |_|   
+                                                   
+                                                   
+"""
+    print(banner)
+    print("https://itresit.es/en/home-en/")
+    print()
+    print("Author: Peter Gabaldon (https://x.com/PedroGabaldon)\n")
+
 def main():
+    print_banner()
+
     parser = argparse.ArgumentParser(
         description="Check FIXED/NOT FIXED status and optionally compromised state on devices."
     )
