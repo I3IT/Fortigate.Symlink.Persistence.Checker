@@ -1,5 +1,12 @@
 # Fortigate Symlink Persistence Method Checker
 
+# Writeup
+
+The following blog posts are available with the information of the research.
+
+- [https://pgj11.com/posts/FortiGate-Symlink-Attack/](https://pgj11.com/posts/FortiGate-Symlink-Attack/)
+- [https://labs.itresit.es/2026/02/11/fortigate-symlink-persistence-method-patch-bypass-cve-2025-68686/](https://labs.itresit.es/2026/02/11/fortigate-symlink-persistence-method-patch-bypass-cve-2025-68686/)
+
 The following script checks remotely if a Fortigate unit has been fixed vs the persistence method leveraging a symlink in the VPN-SSL used by TA. It also detects if it is compromised unless using only check option (--check).
 
 ```
