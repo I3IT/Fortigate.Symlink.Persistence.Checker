@@ -76,7 +76,7 @@ def main():
     parser.add_argument('--check', action='store_true',
                         help='If specified, skip the sys_global.conf.gz compromised check')
     parser.add_argument('--try-bypass', action='store_true',
-                        help='If specified, try bypassing the patch using double slash technique (CVE-2025-68686 - FG-IR-25-934)')
+                        help='If specified, skip try bypassing the patch using double slash technique (CVE-2025-68686 - FG-IR-25-934)')
     args = parser.parse_args()
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
