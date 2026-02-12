@@ -75,6 +75,8 @@ def main():
     group.add_argument('-i', '--ip-file', help='Text file with IP:port per line')
     parser.add_argument('--check', action='store_true',
                         help='If specified, skip the sys_global.conf.gz compromised check')
+    parser.add_argument('--try-bypass', action='store_true',
+                        help='If specified, try bypassing the patch using double slash technique (CVE-2025-68686 - FG-IR-25-934)')
     args = parser.parse_args()
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -108,11 +110,29 @@ def main():
         except requests.RequestException as e:
             print(f"{ip}:{port} ERROR on test check: {e}")
             continue
+        
+        # Check /lang//custom/test for CVE-2025-68686 (FG-IR-25-934) status
+        try:
+            code = check_path(ip, port, '/lang//custom/test')
+            if code == 403:
+                print(f"\033[32m{ip}:{port} CVE-2025-68686 FIXED\033[0m")
+            else:
+                print(f"\033[33m{ip}:{port} CVE-2025-68686 NOT FIXED (double slash technique could be leveraged to bypass symlink patch) (status {code})\033[0m")
+        except requests.RequestException as e:
+            print(f"{ip}:{port} ERROR on test check: {e}")
 
         # Optionally check compromised path
         if not args.check:
             try:
                 code2 = check_path(ip, port, '/lang/custom/data/config/sys_global.conf.gz')
+                if code2 == 200:
+                    print(f"\033[31m{ip}:{port} COMPROMISED\033[0m")
+            except requests.RequestException as e:
+                print(f"{ip}:{port} ERROR on compromised check: {e}")
+        
+        if not args.try_bypass:
+            try:
+                code2 = check_path(ip, port, '/lang//custom/data/config/sys_global.conf.gz')
                 if code2 == 200:
                     print(f"\033[31m{ip}:{port} COMPROMISED\033[0m")
             except requests.RequestException as e:
