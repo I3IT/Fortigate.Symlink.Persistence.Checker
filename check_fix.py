@@ -74,9 +74,9 @@ def main():
     group.add_argument('-t', '--target', help='Single IP:port')
     group.add_argument('-i', '--ip-file', help='Text file with IP:port per line')
     parser.add_argument('--check', action='store_true',
-                        help='If specified, skip the sys_global.conf.gz compromised check')
+                        help='If specified, run sys_global.conf.gz compromised check')
     parser.add_argument('--try-bypass', action='store_true',
-                        help='If specified, skip try bypassing the patch using double slash technique (CVE-2025-68686 - FG-IR-25-934)')
+                        help='If specified, try bypassing the patch using double slash technique (CVE-2025-68686 - FG-IR-25-934)')
     args = parser.parse_args()
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -122,7 +122,7 @@ def main():
             print(f"{ip}:{port} ERROR on test check: {e}")
 
         # Optionally check compromised path
-        if not args.check:
+        if args.check:
             try:
                 code2 = check_path(ip, port, '/lang/custom/data/config/sys_global.conf.gz')
                 if code2 == 200:
@@ -130,7 +130,7 @@ def main():
             except requests.RequestException as e:
                 print(f"{ip}:{port} ERROR on compromised check: {e}")
         
-        if not args.try_bypass:
+        if args.try_bypass:
             try:
                 code2 = check_path(ip, port, '/lang//custom/data/config/sys_global.conf.gz')
                 if code2 == 200:
