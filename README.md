@@ -20,7 +20,7 @@ $ . .venv/bin/activate
 # Usage
 
 ```
-$ python3 check_fix.py -h                                          
+$ python3 check_fix.py -h
 
   _____ _______ _____  ______  _____ _____ _______ 
  |_   _|__   __|  __ \|  ____|/ ____|_   _|__   __|
@@ -46,7 +46,7 @@ options:
   -t, --target TARGET   Single IP:port
   -i, --ip-file IP_FILE
                         Text file with IP:port per line
-  --check               If specified, skip the sys_global.conf.gz compromised check
+  --check               If specified, run sys_global.conf.gz compromised check
   --try-bypass          If specified, try bypassing the patch using double slash technique (CVE-2025-68686 - FG-IR-25-934)
 ```
 
